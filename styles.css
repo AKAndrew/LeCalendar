@@ -1,58 +1,195 @@
-body {
-    background-color: #fff;
-    color: #333;
-    margin: 0;
-    font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
-  }
+.calendar-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
 
-  img {
-      max-width: 100%;
-      display: block;
-	  float:left;
-	  padding: 2em;
-  }
-  
-  .logo {
-    font-size: 200%;
-    padding: 50px 20px;
-    margin: 0 auto;
-    max-width: 980px;
-  }
-  
-  .grid {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 980px;
-  }
-  
-  nav {
-    background-color: #000;
-    padding: .5em;
+.calendar-content{
+	display: grid;
+	grid-template-rows: 1fr 6fr;
+	grid-template-columns: 1fr;
+
+	border-color: grey;
+	border-style: solid;
+	border-radius: 10px;
+
+	padding: 5px;
+	margin:10px;
+	text-align: center;
+}
+
+.calendar-content-weekdays{
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
+	grid-template-rows: 1fr;
+	background-image: linear-gradient(to top, white, #e8e7e3);
+
+}
+
+.calendar-content-weekdays > div{
+	padding: 10px;
+	border-style: solid;
+	border-radius: 3px;
+	border-color: transparent;
+	text-align: center;
+	font-weight: bold;
+}
+
+.calendar-content-days{
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: repeat(6,1fr);
+
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	background-image: linear-gradient(to bottom, white, #e8e7e3);
+
+	padding: 2px;
+}
+
+.calendar-content-days > div{
+	padding: 10px;
+	border-style: solid;
+	border-radius: 3px;
+	border-width: 2px;
+	border-color: transparent;
+	text-align: center;
+}
+
+.calendar-content-days > div:hover{
+	border-color: grey;
+	cursor: pointer;
+}
+
+.controller{
+	width: 200px;
+	height: 30px;
+	margin: auto;
 	position: sticky;
-	top: 0;
-  }
-  
-  nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	padding:10px;
+}
+
+.controller-body{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	}
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: .5em 1em;
-  }
-  
-  .photos {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+	height: 100%;
+	width: 100%;
+	align-items:center;
+	justify-content: space-around;
+	font-weight: bold;
+}
 
-  .feature {
-      width: 200px;
-  }
+
+.controller-display{
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	
+	width: 100%;
+	height: 100%;
+	
+	display: flex;
+	flex-direction: row;
+	align-items:center;	
+	justify-content: space-around;
+}
+
+.controller-left-btn{
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px 0px 1px 1px;
+	border-radius: 5px 0px 0px 5px;
+	
+	height: 100%;
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+	justify-content: space-around;
+}
+
+.controller-right-btn{
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px 1px 1px 0px;
+	border-radius: 0px 5px 5px 0px;
+
+	height: 100%;
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+	justify-content: space-around;
+}
+
+
+.controller-left-btn:hover{
+	background-image: linear-gradient(to bottom, white, #e8e7e3);
+	text-shadow: 0px 0px 5px black;
+	color: white;
+	cursor:pointer;
+}
+.controller-right-btn:hover{
+	background-image: linear-gradient(to bottom, white, #e8e7e3);
+	text-shadow: 0px 0px 5px black;
+	color: white;
+	cursor:pointer;
+}
+.controller-display:hover{
+	background-image: linear-gradient(to bottom, white, #e8e7e3);
+	text-shadow: 0px 0px 5px black;
+	color: white;
+	cursor:pointer;
+}
+
+
+header{
+	text-align: center;
+	top: 0px;
+	position: sticky;
+
+	border-style: solid;
+	border-width: 0px 1px 1px 1px;
+	border-radius: 0px 0px 10px 10px;
+	border-color: grey;
+	background-image: linear-gradient(to bottom, white, #e8e7e3);
+}
+
+nav > ul > li{
+	list-style: none;
+	padding: 10px;
+	margin: 0px;
+
+	border-radius: 10px;
+	border-color: transparent;
+}
+
+nav > ul > li:hover{
+	background-image: radial-gradient(white, #e8e7e3);
+	text-shadow: 0px 0px 5px black;
+	color: white;
+	cursor:pointer;
+}
+
+li > h1{
+	margin:0px;
+	padding: 0px;
+}
+
+nav > ul{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0px;
+	margin: 0px;
+}
+
+body{
+	max-width: 800px;
+	margin:auto;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #e8e7e3;
+	color: #323c50;
+}
+
