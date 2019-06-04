@@ -108,7 +108,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 $success = true;
 $password=strtoupper(md5($password));
-$query = "BEGIN hots_account.create_account(:a_username, :a_password, :a_succes); END;";
+$query = "BEGIN lecalendar_account.create_account(:a_username, :a_password, :a_succes); END;";
 
 
 $c = oci_connect("STUDENT", "STUDENT", "");

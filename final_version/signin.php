@@ -104,7 +104,7 @@ function test_input($data) {
         error_reporting(E_ALL);
         ini_set('display_errors', 'On');
 
-        $query = "BEGIN hots_account.login_account(:a_username, :a_password, :a_succes); END;";
+        $query = "BEGIN lecalendar_account.login_account(:a_username, :a_password, :a_succes); END;";
 
 
         $c = oci_connect("STUDENT", "STUDENT", "");
