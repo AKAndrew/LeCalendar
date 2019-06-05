@@ -1,6 +1,5 @@
 <?php
 class Calendar {
-//date_default_timzeone_set('Europe/Bucharest');
     /**
      * Constructor
      */
@@ -136,9 +135,22 @@ class Calendar {
             $cellContent=null;
         }
 
+if(
+//$this->currentDate == date('Y-m-d',strtotime($this->currentYear.'-'.$this->currentMonth.'-'.($this->currentDay)))
 
+$this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time()))))
+
+)
+{
+          return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+                  ($cellContent==null?'mask':'').'"style="background: red;">'.$cellContent.'</li>';
+}
+else {
         return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                 ($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
+}
+
+
     }
 
     /**
@@ -346,7 +358,9 @@ div#calendar ul.dates li{
 :focus{
     outline:none;
 }
-
+div#calendar ul.dates :hover{
+  background: grey;
+}
 div.clear{
     clear:both;
 }
