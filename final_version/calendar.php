@@ -135,12 +135,7 @@ class Calendar {
             $cellContent=null;
         }
 
-if(
-//$this->currentDate == date('Y-m-d',strtotime($this->currentYear.'-'.$this->currentMonth.'-'.($this->currentDay)))
-
-$this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time()))))
-
-)
+if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time())))))
 {
           return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                   ($cellContent==null?'mask':'').'"style="background: red;">'.$cellContent.'</li>';
@@ -169,7 +164,7 @@ else {
         return
             '<div class="header">'.
                 '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Prev</a>'.
-                    '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
+                    '<span class="title">'.date('M Y',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
                 '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Next</a>'.
             '</div>';
     }
@@ -256,6 +251,8 @@ div#calendar div.box{
     width:100%;
     height:40px;
     background-color:   #787878 ;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 div#calendar div.header{
@@ -299,7 +296,8 @@ div#calendar div.header a.next{
 /*******************************Calendar Content Cells*********************************/
 div#calendar div.box-content{
     border:1px solid #787878 ;
-    border-top:none;
+    //border-top:none;
+    border-radius: 10px;
 }
 
 
@@ -353,6 +351,7 @@ div#calendar ul.dates li{
     background-color: #DDD;
     color:#000;
     text-align:center;
+    border-radius: 10px;
 }
 
 :focus{
