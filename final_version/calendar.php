@@ -134,24 +134,36 @@ class Calendar {
 
             $cellContent=null;
         }
+//BACKUP
+  if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time())))))
 
+  return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="background: red;" onclick="events()">'.$cellContent.'</li>';
+
+  else if($cellNumber%7==0) return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="color: red;" onclick="events()">'.$cellContent.'</li>';
+
+  else if($this->currentDate) return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'" onclick="events()">'.$cellContent.'</li>';
+
+  else return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+                ($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
+
+//END_BACKUP*/
+/*//TESTING
 if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time())))))
 {
-          return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+          return '<li id="day" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                   ($cellContent==null?'mask':'').'"style="background: red;">'.$cellContent.'</li>';
 }
 else {
 
   if($cellNumber%7==0)
-    return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+    return '<li id="day" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
           ($cellContent==null?'mask':'').'"style="color: red;">'.$cellContent.'</li>';
 
 
-        return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+        return '<li id="day" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                 ($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
 }
-
-
+//END_TESTING*/
     }
 
     /**
@@ -170,7 +182,7 @@ else {
         return
             '<div class="header">'.
                 '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Prev</a>'.
-                    '<span class="title">'.date('M Y',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
+                    '<span class="title" onclick="reload()">'.date('M Y',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
                 '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Next</a>'.
             '</div>';
     }
@@ -243,8 +255,16 @@ else{
     }
 
 }
-
+//session_start();
+  //$_SESSION["day"]="da \n";
+  //$_SESSION["day"]=null;
 ?>
+<script>
+
+function reload() {
+  window.location.assign("index.php");
+}
+</script>
 <style>
 /*******************************Calendar Top Navigation*********************************/
 div#calendar{

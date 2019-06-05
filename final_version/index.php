@@ -39,7 +39,21 @@ include 'calendar.php';
 $calendar = new Calendar();
 
 echo $calendar->show();
+//if(isset($_SESSION["day"])){echo $_SESSION["day"];echo "done \n";}
+
+echo "test";
 ?>
+<script>
+function events() {
+  document.getElementById("li-").innerHTML = document.getElementById("li-2019-06-05").innerHTML;
+//document.getElementById("li-2019-06-05").innerHTML = "No";
+
+  //return document.getElementById("li-2019-06-05").value;
+  //document.getElementById("day").innerHTML = "No";
+  //document.getElementById("day").value = "No";
+}
+
+</script>
 <footer>
 	<div class="footer-content">
 		&copy; Faculty of Computer Science<br/><sub>est. MMXIX</sub><br/><sup>Iași, Romania</sup>
