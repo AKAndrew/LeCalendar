@@ -141,6 +141,12 @@ if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",ti
                   ($cellContent==null?'mask':'').'"style="background: red;">'.$cellContent.'</li>';
 }
 else {
+
+  if($cellNumber%7==0)
+    return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+          ($cellContent==null?'mask':'').'"style="color: red;">'.$cellContent.'</li>';
+
+
         return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
                 ($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
 }
@@ -178,8 +184,12 @@ else {
 
         foreach($this->dayLabels as $index=>$label){
 
+if($label=="Sun"){
+$content.='<li class="'.($label==6?'end title':'start title').' title"style="color:red">'.$label.'</li>';
+}
+else{
             $content.='<li class="'.($label==6?'end title':'start title').' title">'.$label.'</li>';
-
+}
         }
 
         return $content;
