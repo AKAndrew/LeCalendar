@@ -150,13 +150,13 @@ class Calendar {
 ///BUTTONS
 if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time())))))
 
-return '<button id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="background: red;" onclick="events()">'.$cellContent.'</button>';
+return '<button id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="background: red;" onclick="events(this.id)">'.$cellContent.'</button>';
 
-else if($this->currentDate&&$cellNumber%7==0) return '<button id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="color: red;" onclick="events()">'.$cellContent.'</button>';
+else if($this->currentDate&&$cellNumber%7==0) return '<button id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="color: red;" onclick="events(this.id)">'.$cellContent.'</button>';
 
-else if($this->currentDate) return '<button id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'" onclick="events()">'.$cellContent.'</button>';
+else if($this->currentDate) return '<button id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'" onclick="events(this.id)">'.$cellContent.'</button>';
 
-else return '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+else return '<li id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
               ($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
 
 

@@ -42,14 +42,29 @@ echo $calendar->show();
 //if(isset($_SESSION["day"])){echo $_SESSION["day"];echo "done \n";}
 
 ?>
-<div>
-<p id=day></p>
-<p id=month></p>
-<p id=year></p>
+<div class="events">
+<p id=event></p>
 </div>
 <script>
 //setInterval("events()", 1);
-function events() {
+function events(date) {
+
+
+    var xhttp;
+    if (date.length == 0) {
+      document.getElementById("date").innerHTML = "";
+      return;
+    }
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("event").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "getdate.php?q="+date, true);
+    xhttp.send();
+
+
   //document.getElementById("li-2019-06-05").innerHTML = "No";
   //return document.getElementById("li-2019-06-05").value;
   //document.getElementById("day").innerHTML = "No";
@@ -76,12 +91,15 @@ document.addEventListener("click", function(){
 
 //document.getElementsByTagName("LI").addEventListener("click", function() {
 
-var day = document.activeElement.innerHTML;
-document.getElementById("day").innerHTML = day;
-var month = document.getElementsByTagName("span")[0].innerHTML;
-document.getElementById("month").innerHTML = month;
+//var day = document.activeElement.innerHTML;
+//document.getElementById("day").innerHTML = date;
+
+
+//var month = document.getElementsByTagName("span")[0].innerHTML;
+//document.getElementById("month").innerHTML = month;
 
 //});
+
 }
 
 </script>
@@ -92,5 +110,13 @@ document.getElementById("month").innerHTML = month;
 </footer>
 
 </body>
-
+<style>
+  div.events{
+    text-align: center;
+     background: grey;
+    margin: 50px;
+    //padding: 5px;
+    //display: flex;
+  }
+</style>
 </html>
