@@ -1,59 +1,44 @@
 <?php
-// Array with names
-$a[] = "Anna";
-$a[] = "Brittany";
-$a[] = "Cinderella";
-$a[] = "Diana";
-$a[] = "Eva";
-$a[] = "Fiona";
-$a[] = "Gunda";
-$a[] = "Hege";
-$a[] = "Inga";
-$a[] = "Johanna";
-$a[] = "Kitty";
-$a[] = "Linda";
-$a[] = "Nina";
-$a[] = "Ophelia";
-$a[] = "Petunia";
-$a[] = "Amanda";
-$a[] = "Raquel";
-$a[] = "Cindy";
-$a[] = "Doris";
-$a[] = "Eve";
-$a[] = "Evita";
-$a[] = "Sunniva";
-$a[] = "Tove";
-$a[] = "Unni";
-$a[] = "Violet";
-$a[] = "Liza";
-$a[] = "Elizabeth";
-$a[] = "Ellen";
-$a[] = "Wenche";
-$a[] = "Vicky";
-
-// get the q parameter from URL
 $q = $_REQUEST["q"];
 
 echo $q;
-/*
-$hint = "";
 
-// lookup all hints from array if $q is different from ""
-if ($q !== "") {
-    $q = strtolower($q);
-    $len=strlen($q);
-    foreach($a as $name) {
-        if (stristr($q, substr($name, 0, $len))) {
-            if ($hint === "") {
-                $hint = $name;
-            } else {
-                $hint .= ", $name";
-            }
+
+        error_reporting(E_ALL);
+        ini_set('display_errors', 'On');
+
+        $query = "BEGIN lecalendar_events.get_events(:a_date, :a_succes); END;";
+
+
+        $c = oci_connect("STUDENT", "STUDENT", "");
+
+        if (!$c) {
+            $m = oci_error();
+            trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
         }
-    }
-}
 
-// Output "no suggestion" if no hint was found or output correct values
-echo $hint === "" ? "no suggestion" : $hint;
-*/
+        $s = oci_parse($c, $query);
+        if (!$s) {
+            $m = oci_error($c);
+            trigger_error('Could not parse statement: '. $m['message'], E_USER_ERROR);
+        }
+        //$password=strtoupper(md5($password));
+        oci_bind_by_name($s,':a_date',$q);
+        //oci_bind_by_name($s,':a_password',$password);
+        oci_bind_by_name($s,':a_succes',$succes,1);
+
+        $r = oci_execute($s);
+        if (!$r) {
+            $m = oci_error($s);
+            trigger_error('Could not execute statement: '. $m['message'], E_USER_ERROR);
+        }
+
+        if($succes){
+        $_SESSION["username"]=$username;
+
+        //header('Location: index.php');
+        }
+        else{
+        echo "<span class=error>Incorect data.</span>";
+        }
 ?>

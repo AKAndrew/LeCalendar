@@ -61,7 +61,7 @@ function events(date) {
         document.getElementById("event").innerHTML = this.responseText;
       }
     };
-    xhttp.open("GET", "getdate.php?q="+date, true);
+    xhttp.open("GET", "getevents.php?q="+date, true);
     xhttp.send();
 
 
