@@ -1,3 +1,13 @@
+*{
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 .calendar-body {
 	display: flex;
 	flex-direction: column;
@@ -102,13 +112,13 @@
 	border-color: grey;
 	border-style: solid;
 	border-width: 1px;
-	
+
 	width: 100%;
 	height: 100%;
-	
+
 	display: flex;
 	flex-direction: row;
-	align-items:center;	
+	align-items:center;
 	justify-content: space-around;
 }
 
@@ -124,7 +134,7 @@
 	border-style: solid;
 	border-width: 1px 0px 1px 1px;
 	border-radius: 5px 0px 0px 5px;
-	
+
 	height: 100%;
 	width: 20%;
 	display: flex;
@@ -249,7 +259,7 @@ nav > ul{
 	background-image: linear-gradient(to bottom, white, #e8e7e3);
 }
 
-hr { 
+hr {
 	width: 100%;
 }
 
@@ -319,7 +329,7 @@ input[type=submit]{
 	background-color: transparent;
 	border-style: dotted;
 	border-color: grey;
-	border-radius: 5px;	
+	border-radius: 5px;
 	float:right;
 }
 
