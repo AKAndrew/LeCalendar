@@ -41,16 +41,47 @@ $calendar = new Calendar();
 echo $calendar->show();
 //if(isset($_SESSION["day"])){echo $_SESSION["day"];echo "done \n";}
 
-echo "test";
 ?>
+<div>
+<p id=day></p>
+<p id=month></p>
+<p id=year></p>
+</div>
 <script>
+//setInterval("events()", 1);
 function events() {
-  document.getElementById("li-").innerHTML = document.getElementById("li-2019-06-05").innerHTML;
-//document.getElementById("li-2019-06-05").innerHTML = "No";
-
+  //document.getElementById("li-2019-06-05").innerHTML = "No";
   //return document.getElementById("li-2019-06-05").value;
   //document.getElementById("day").innerHTML = "No";
   //document.getElementById("day").value = "No";
+
+  //document.getElementById("li-").innerHTML = document.getElementById("li-2019-06-07").innerHTML;
+/*
+  document.getElementsByClassName(" ").addEventListener("click", function() {
+    alert("You clicked the li element!");
+  }, false);*/
+
+/*
+  document.addEventListener("click", function(){
+    //document.getElementById("li-").innerHTML = "Hello World";
+    var x=document.getElementById("li-").value;
+
+  document.getElementById("li-").innerHTML = x;});
+*/
+/*
+document.addEventListener("click", function(){
+   document.getElementById("li-").innerHTML = document.innerHTML;
+});
+*/
+
+//document.getElementsByTagName("LI").addEventListener("click", function() {
+
+var day = document.activeElement.innerHTML;
+document.getElementById("day").innerHTML = day;
+var month = document.getElementsByTagName("span")[0].innerHTML;
+document.getElementById("month").innerHTML = month;
+
+//});
 }
 
 </script>
