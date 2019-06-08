@@ -54,7 +54,6 @@ $username = $_SESSION["username"];
 ?>
 
 <?php
-// define variables and set to empty values
 $usernameErr = $passwordErr = $password0Err = "";
 $password = $password0 = "";
 
@@ -63,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usernameErr = "username is required";
   } else {
     //$username = test_input($_POST["username"]);
-    // check if username only contains letters and whitespace
+
 $username = $_POST["username"];
 /*
     if (!preg_match("/^[_a-zA-Z1-9 ]*$/",$username)) {

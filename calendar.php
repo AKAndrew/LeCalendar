@@ -1,13 +1,9 @@
 <?php
 class Calendar {
-    /**
-     * Constructor
-     */
     public function __construct(){
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
     }
 
-    /********************* PROPERTY ********************/
     private $dayLabels = array("Mon","Tue","Wed","Thu","Fri","Sat","Sun");
 
     private $currentYear=0;
@@ -22,11 +18,6 @@ class Calendar {
 
     private $naviHref= null;
 
-    /********************* PUBLIC **********************/
-
-    /**
-    * print out the calendar
-    */
     public function show() {
       if (isset($_GET['year'])) {
 
@@ -84,10 +75,9 @@ class Calendar {
                                 $content.='<ul class="dates">';
 
                                 $weeksInMonth = $this->_weeksInMonth($month,$year);
-                                // Create weeks in a month
+
                                 for( $i=0; $i<$weeksInMonth; $i++ ){
 
-                                    //Create days in a week
                                     for($j=1;$j<=7;$j++){
                                         $content.=$this->_showDay($i*7+$j);
                                     }
@@ -103,10 +93,6 @@ class Calendar {
         return $content;
     }
 
-    /********************* PRIVATE **********************/
-    /**
-    * create the li element for ul
-    */
     private function _showDay($cellNumber){
 
         if($this->currentDay==0){
@@ -162,28 +148,8 @@ else return '<li id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start 
 
 //END_BUTTONS*/
 
-/*//TESTING
-if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time())))))
-{
-          return '<li id="day" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-                  ($cellContent==null?'mask':'').'"style="background: red;">'.$cellContent.'</li>';
-}
-else {
+  }
 
-  if($cellNumber%7==0)
-    return '<li id="day" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-          ($cellContent==null?'mask':'').'"style="color: red;">'.$cellContent.'</li>';
-
-
-        return '<li id="day" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-                ($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
-}
-//END_TESTING*/
-    }
-
-    /**
-    * create navigation
-    */
     private function _createNavi(){
 
         $nextMonth = $this->currentMonth==12?1:intval($this->currentMonth)+1;
@@ -202,9 +168,6 @@ else {
             '</div>';
     }
 
-    /**
-    * create calendar week labels
-    */
     private function _createLabels(){
 
         $content='';
@@ -222,11 +185,6 @@ else{
         return $content;
     }
 
-
-
-    /**
-    * calculate number of weeks in a particular month
-    */
     private function _weeksInMonth($month=null,$year=null){
 
         if( null==($year) ) {
@@ -237,7 +195,6 @@ else{
             $month = date("m",time());
         }
 
-        // find number of days in this month
         $daysInMonths = $this->_daysInMonth($month,$year);
 
         $numOfweeks = ($daysInMonths%7==0?0:1) + intval($daysInMonths/7);
@@ -255,9 +212,6 @@ else{
         return $numOfweeks;
     }
 
-    /**
-    * calculate number of days in a particular month
-    */
     private function _daysInMonth($month=null,$year=null){
 
         if(null==($year))
@@ -270,9 +224,6 @@ else{
     }
 
 }
-//session_start();
-  //$_SESSION["day"]="da \n";
-  //$_SESSION["day"]=null;
 ?>
 <script>
 
@@ -281,7 +232,7 @@ function reload() {
 }
 </script>
 <style>
-/*******************************Calendar Top Navigation*********************************/
+
 div#calendar{
   margin:0px auto;
   padding:0px;
@@ -335,17 +286,11 @@ div#calendar div.header a.next{
     right:0px;
 }
 
-
-
-
-/*******************************Calendar Content Cells*********************************/
 div#calendar div.box-content{
     border:1px solid #787878 ;
     //border-top:none;
     border-radius: 10px;
 }
-
-
 
 div#calendar ul.label{
     float:left;
@@ -371,7 +316,6 @@ div#calendar ul.label li{
     background-color: transparent;
 }
 
-
 div#calendar ul.dates{
     float:left;
     margin: 0px;
@@ -380,7 +324,6 @@ div#calendar ul.dates{
     margin-bottom: 5px;
 }
 
-/** overall width = width+padding-right**/
 div#calendar ul.dates li, button{
     margin:0px;
     padding:0px;
