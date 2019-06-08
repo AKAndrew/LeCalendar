@@ -7,7 +7,7 @@ session_start();
 
 <head>
   <meta charset="utf-8">
-  <title>Home - leCalendar</title>
+  <title>Calendar - leCalendar</title>
   <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -30,7 +30,7 @@ session_start();
     <?php }} else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-      <a href="about.php"><li>Home</li></a>
+      <!--<a href="about.php"><li>Home</li></a>-->
       <a href="signin.php"><li>Sign in</li></a>
       <a href="register.php"><li>Sign up</li></a>
 <?php }?>

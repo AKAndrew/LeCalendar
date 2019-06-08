@@ -7,7 +7,7 @@ $friendname="";
 
 <head>
   <meta charset="utf-8">
-  <title>Home - leCalendar</title>
+  <title>Profile- leCalendar</title>
   <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -29,7 +29,8 @@ $friendname="";
     <?php }} else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-      <a href="about.php"><li>Home</li></a>
+      <!--<a href="about.php"><li>Home</li></a>-->
+      <a href="index.php"><li>Calendar</li></a>
       <a href="signin.php"><li>Sign in</li></a>
       <a href="register.php"><li>Sign up</li></a>
 <?php }?>
@@ -187,6 +188,16 @@ echo "<span class=error>Incorect data.</span>";
 <span class="error"><?php echo $usernameErr;?></span>
 <input type="email" name="username" placeholder="E-mail" value="<?php echo $friendname;?>">
 </br></br><input type="submit" name="submit" value="Send friend request">
+
+</form>
+</div>
+</br></br>
+</br></br>
+<div class="register-form" style="margin-top: 30px;">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<span class="error"><?php echo $usernameErr;?></span>
+<input type="email" name="username" placeholder="Document" value="<?php echo $friendname;?>">
+</br></br><input type="submit" name="submit" value="Upload calendar">
 
 </form>
 </div>

@@ -14,7 +14,7 @@ if(!empty($_SESSION))
 
 <head>
   <meta charset="utf-8">
-  <title>Register - leCalendar</title>
+  <title>Sign in - leCalendar</title>
   <link href="styles.css" rel="stylesheet" type="text/css">
 <style>
 .error {color: #FF0000;}
@@ -27,8 +27,9 @@ if(!empty($_SESSION))
 	<nav>
 		<ul>
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-			<a href="about.php"><li>Home</li></a>
-      <a href="signin.php"><li>Sign in</li></a>
+      <!--<a href="about.php"><li>Home</li></a>-->
+      <a href="index.php"><li>Calendar</li></a>
+      <!--<a href="signin.php"><li>Sign in</li></a>-->
 			<a href="register.php"><li>Sign up</li></a>
 
       <?php
