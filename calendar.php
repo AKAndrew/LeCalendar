@@ -150,7 +150,7 @@ class Calendar {
 ///BUTTONS
 if($this->currentDate == date('Y-m-d',strtotime(date("y",time()).'-'.date("m",time()).'-'.(date("d",time())))))
 
-return '<button id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="background: red;" onclick="events(this.id)">'.$cellContent.'</button>';
+return '<button id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="background: red;color:black;" onclick="events(this.id)">'.$cellContent.'</button>';
 
 else if($this->currentDate&&$cellNumber%7==0) return '<button id="'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).($cellContent==null?'mask':'').'"style="color: red;" onclick="events(this.id)">'.$cellContent.'</button>';
 

@@ -24,7 +24,8 @@ session_start();
           //header('Location: index.php');
       ?>
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-      <a href="index.php"><li>Calendar</li></a>
+      <!--<a href="index.php"><li>Calendar</li></a>-->
+      <a href="profile.php"><li>Profile</li></a>
       <a href="register.php"><li>Sign up</li></a>
     <?php }} else{?>
 
@@ -56,7 +57,7 @@ echo $calendar->show();
 
 ?>
 <div class="events">
-<p id=event></p>
+<div id=event><b>Select a date</b></div>
 </div>
 <script>
 //setInterval("events()", 1);
@@ -128,8 +129,9 @@ document.addEventListener("click", function(){
     text-align: center;
      background: grey;
     margin: 50px;
-    //padding: 5px;
+    padding: 25px;
     //display: flex;
+    border-radius: 50px;
   }
 </style>
 </html>
