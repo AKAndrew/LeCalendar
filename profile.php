@@ -113,15 +113,15 @@ function test_input($data) {
 
 
 <p><span class="error"><?php echo $usernameErr;?></span>
-<input type="email" name="username" placeholder="E-mail" value="<?php echo $username;?>">
+<input type="email" name="username" placeholder="New e-mail" value="<?php echo $username;?>">
 </p>
 <p>
 <span class="error"><?php echo $passwordErr;?></span>
-<input type="password" name="password" placeholder="Password" value="<?php echo $password;?>">
+<input type="password" name="password" placeholder="New password" value="<?php echo $password;?>">
 </p>
 <p>
 <span class="error"><?php echo $password0Err;?></span>
-<input type="password" name="password0" placeholder="Password" value="<?php echo $password0;?>">
+<input type="password" name="password0" placeholder="New password" value="<?php echo $password0;?>">
 </p>
 <?php
 if($password&&$password0){
