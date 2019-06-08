@@ -26,10 +26,11 @@ if(!empty($_SESSION))
 <header>
 	<nav>
 		<ul>
-      		<a href="index.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-			<a href="index.php"><li>Home</li></a>
-			<a href="register.php"><li>Get Started</li></a>
-			<a href="about.php"><li>About</li></a>
+      <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+			<a href="about.php"><li>Home</li></a>
+      <a href="signin.php"><li>Sign in</li></a>
+			<a href="register.php"><li>Sign up</li></a>
+
       <?php
       if(!empty($_SESSION))
       {
@@ -93,7 +94,7 @@ function test_input($data) {
       -->
 <p>
       <span class="error"><?php echo $usernameErr;?></span>
-        <input type="text" name="username" placeholder="Username" value="<?php echo $username;?>">
+        <input type="email" name="username" placeholder="E-mail" value="<?php echo $username;?>">
 </p>
 <p>
         <span class="error"><?php echo $passwordErr;?></span>

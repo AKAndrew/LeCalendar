@@ -1,9 +1,10 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>Register - leCalendar</title>
+  <title>Sign up - leCalendar</title>
   <link href="styles.css" rel="stylesheet" type="text/css">
 <style>
 .error {color: #FF0000;}
@@ -54,10 +55,23 @@
 <header>
 	<nav>
 		<ul>
-      		<a href="index.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-			<a href="index.php"><li>Home</li></a>
-			<a href="register.php"><li>Get Started</li></a>
-			<a href="about.php"><li>About</li></a>
+      <?php
+      if(!empty($_SESSION))
+      {
+        if(isset($_SESSION["username"]))
+        {
+          //header('Location: index.php');
+      ?>
+      <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+      <a href="index.php"><li>Calendar</li></a>
+      <a href="register.php"><li>Sign up</li></a>
+    <?php }} else{?>
+
+      <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+      <a href="about.php"><li>Home</li></a>
+      <a href="signin.php"><li>Sign in</li></a>
+      <a href="register.php"><li>Sign up</li></a>
+<?php }?>
       <?php
       if(!empty($_SESSION))
       {
@@ -73,7 +87,7 @@
 
 <div class="register-content">
 	<div class="register-text">
-		<p style="font-weight: bold">Register</p>
+		<p style="font-weight: bold">Sign up</p>
 		<p>W3Schools is optimized for learning, testing, and training. Examples might be simplified to improve reading and basic understanding. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 1999-2019 by Refsnes Data. All Rights Reserved.
 			Powered by W3.CSS.</p>
 	</div>
@@ -91,7 +105,7 @@
 
 
 <p><span class="error"><?php echo $usernameErr;?></span>
-<input type="text" name="username" placeholder="Username" value="<?php echo $username;?>">
+<input type="email" name="username" placeholder="E-mail" value="<?php echo $username;?>">
 </p>
 <p>
 <span class="error"><?php echo $passwordErr;?></span>

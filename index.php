@@ -16,10 +16,23 @@ session_start();
 <header>
 	<nav>
 		<ul>
-      		<a href="index.php"><p style="font-weight: bold">The leCalendar Website</p></a>
-			<a href="index.php"><li>Home</li></a>
-			<a href="register.php"><li>Get Started</li></a>
-			<a href="about.php"><li>About</li></a>
+      <?php
+      if(!empty($_SESSION))
+      {
+        if(isset($_SESSION["username"]))
+        {
+          //header('Location: index.php');
+      ?>
+      <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+      <a href="index.php"><li>Calendar</li></a>
+      <a href="register.php"><li>Sign up</li></a>
+    <?php }} else{?>
+
+      <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+      <a href="about.php"><li>Home</li></a>
+      <a href="signin.php"><li>Sign in</li></a>
+      <a href="register.php"><li>Sign up</li></a>
+<?php }?>
       <?php
       if(!empty($_SESSION))
       {
