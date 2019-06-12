@@ -40,18 +40,22 @@ END lecalendar_external;
 --select MAX(ID) INTO v_id from events;
 --insert into events values (v_id+1, p_title, p_description, p_location, to_date(p_start_date,'YYYY-MM-DD'), TO_DATE(p_end_date,'YYYY-MM-DD'), to_date(p_start_hour,'HH24:MI'), to_date(p_end_hour, 'HH24:MI'), p_visibility, p_id_creator, p_keywords);
 --END;
-/
-BEGIN
-lecalendar_external.add_event('titlu','descriere','locatie','2019-06-13','2019-06-13','10:00','17:00',1,1001,'test');
-END;
-/
-BEGIN
-add_event('titlu','descriere','locatie','2019-06-13','2019-06-13','10:00','17:00',1,1001,'test');
-END;
-/
-select * from events;
-/
-insert into events values (1,'nebunia lui salam','ceam mai mare smecherie pe sistem','fratelii',to_date('2019-06-12','yyyy-mm-dd'),to_date('2019-06-13','yyyy-mm-dd'),to_date('20:00','HH24:MI'),to_date('23:00','HH24:MI'),1,327,'smecherie cu buton la cutie valoare buzunarul meu vorbeste');
+--/
+--BEGIN
+--lecalendar_external.add_event('titlu','descriere','locatie','2019-06-13','2019-06-13','10:00','17:00',1,1001,'test');
+--END;
+--/
+--BEGIN
+--add_event('titlu','descriere','locatie','2019-06-13','2019-06-13','10:00','17:00',1,1001,'test');
+--END;
+--/
+--select * from events;
+--/
+--insert into events values (1,'nebunia lui salam','ceam mai mare smecherie pe sistem','fratelii',to_date('2019-06-12','yyyy-mm-dd'),to_date('2019-06-13','yyyy-mm-dd'),to_date('20:00','HH24:MI'),to_date('23:00','HH24:MI'),1,1001,'smecherie cu buton la cutie valoare buzunarul meu vorbeste');
 --select * from users where id=1001;
-/
-commit;
+--/
+--select * from users where username='a@a';
+--/
+
+--/
+--commit;
