@@ -294,7 +294,7 @@ echo $creator;
 echo $title; echo $location; echo $description; echo $start_hour; echo $end_hour; echo $visible; echo $tags;*/
 
 ///BREAKS
-$query = "BEGIN add_event(:a_titlu,:a_descriere,:a_locatie,:a_current_date,:a_current_date,:a_start_hour,:a_end_hour,:a_visible,:a_creator,:a_tags); END;";
+$query = "BEGIN lecalendar_external.add_event(:a_titlu,:a_descriere,:a_locatie,:a_current_date,:a_current_date,:a_start_hour,:a_end_hour,:a_visible,:a_creator,:a_tags); END;";
 
 $c = oci_connect("STUDENT", "STUDENT", "");
 

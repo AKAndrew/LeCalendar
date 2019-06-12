@@ -8,7 +8,7 @@ echo $q;
         error_reporting(E_ALL);
         ini_set('display_errors', 'On');
 
-        $query = "select to_char(start_hour,'HH24:MI')\"Start\",to_char(end_hour,'HH24:MI')\"End\", location, title, description from events where to_char(start_date,'yyyy-mm-dd') = '" . $q . "'";
+        $query = "select to_char(start_hour,'HH24:MI')\"Start\",to_char(end_hour,'HH24:MI')\"End\", location\"Location\", title\"Name\", description\"Description\" from events where to_char(start_date,'yyyy-mm-dd') = '" . $q . "' order by start_hour";
 
 
         $c = oci_connect("STUDENT", "STUDENT", "");

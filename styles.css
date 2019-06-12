@@ -8,6 +8,22 @@
   -o-user-select: none;
   user-select: none;
 }
+table{
+  background-color: #00000099;
+//display: block;
+margin: 20px auto;
+text-align: center;
+//border: 2px solid #1c6a9e;
+padding: 10px 10px;
+//width: 200px;
+outline: none;
+color: white;
+border-radius: 20px;
+transition: 0.25s;
+}
+tr,th,td{
+  padding: 10px 10px;
+}
 .calendar-body {
 	display: flex;
 	flex-direction: column;
