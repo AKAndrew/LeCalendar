@@ -350,6 +350,9 @@ div#calendar ul.dates li, button{
 div#calendar ul.dates :hover{
   background: grey;
 }
+div#calendar ul.dates :focus{
+  background: grey;
+}
 div.clear{
     clear:both;
 }

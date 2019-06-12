@@ -12,7 +12,7 @@ $month=$_SESSION['month'];
 </head>
 
 <body style="background-image:url(./images/<?php echo $month;?>.jpg);">
-
+<!--width:400px;height:266px;-->
 
 <header style="position: sticky; top:0px;">
 	<nav>
