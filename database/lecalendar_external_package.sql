@@ -59,3 +59,5 @@ END lecalendar_external;
 
 --/
 --commit;
+--/
+--select * from messages;

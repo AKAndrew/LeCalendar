@@ -22,7 +22,7 @@
       $usernameErr = "username is required";
     } else {
       //$username = test_input($_POST["username"]);
-  
+
   $username = $_POST["username"];
   /*
       if (!preg_match("/^[_a-zA-Z1-9 ]*$/",$username)) {
@@ -66,6 +66,7 @@
       <a href="index.php"><li>Calendar</li></a>
       <!--<a href="register.php"><li>Sign up</li></a>-->
       <a href="profile.php"><li>Profile</li></a>
+      <a href="messages.php"><li>Messages</li></a>
     <?php }} else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>

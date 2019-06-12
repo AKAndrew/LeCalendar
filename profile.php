@@ -25,7 +25,7 @@ $friendname="";
       ?>
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
       <a href="index.php"><li>Calendar</li></a>
-      <a href="register.php"><li>Sign up</li></a>
+      <a href="messages.php"><li>Messages</li></a>
     <?php }} else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>

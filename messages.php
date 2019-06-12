@@ -1,4 +1,45 @@
 <?php
+session_start();
+?>
+<html>
+<link href="styles.css" rel="stylesheet" type="text/css">
+<body>
+  <header>
+  	<nav>
+  		<ul>
+        <?php
+        if(!empty($_SESSION))
+        {
+          if(isset($_SESSION["username"]))
+          {
+            //header('Location: index.php');
+        ?>
+        <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+        <!--<a href="index.php"><li>Calendar</li></a>-->
+        <a href="index.php"><li>Calendar</li></a>
+        <a href="profile.php"><li>Profile</li></a>
+      <?php }} else{?>
+
+        <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
+        <!--<a href="about.php"><li>Home</li></a>-->
+        <a href="signin.php"><li>Sign in</li></a>
+        <a href="register.php"><li>Sign up</li></a>
+  <?php }?>
+        <?php
+        if(!empty($_SESSION))
+        {
+          if(isset($_SESSION["username"]))
+          {
+            //header('Location: index.php');
+        ?>
+        <a href="logout.php"><li>Logout</li></a>
+      <?php }} ?>
+  		</ul>
+  	</nav>
+  </header>
+  </br></br>
+<?php
+$username=$_SESSION["username"];
 $query = "SELECT id from users where username=:a_username";
 $c = oci_connect("STUDENT", "STUDENT", "");
 
@@ -24,15 +65,13 @@ if (!$r) {
 }
 oci_fetch($s);
 
-$username = "STUDENT";
-$password = "STUDENT";
-$database = "";
-$c = oci_connect($username, $password, $database);
+//$c = oci_connect("STUDENT", "STUDENT", "");
 
 
- $query="select sender_name,text from messages where receiver=2";
+ $query="select sender_name,text from messages where receiver=:a_creator";
 
-$c = oci_connect($username, $password, $database);
+
+$c = oci_connect("STUDENT", "STUDENT", "");
 if (!$c) {
     $m = oci_error();
     trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
@@ -43,6 +82,7 @@ if (!$s) {
     $m = oci_error($c);
     trigger_error('Could not parse statement: '. $m['message'], E_USER_ERROR);
 }
+oci_bind_by_name($s,':a_creator',$creator);
 $r = oci_execute($s);
 if (!$r) {
     $m = oci_error($s);
@@ -70,9 +110,6 @@ while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
 echo "</table>\n";
 
 ?>
-</br></br>
-<html>
-<body>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Name: <input type="text" name="fname">
   Msg: <input type="text" name="testmsg">
@@ -88,10 +125,7 @@ if(!empty($_POST['fname'])&&!empty($_POST['testmsg'])){
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$username = "STUDENT";
-$password = "STUDENT";
-$database = "";
-$c = oci_connect($username, $password, $database);
+$c = oci_connect("STUDENT", "STUDENT", "");
 
 
  $c_id=$creator;//implementat obtinerea id-ului pentru userul conectat;
@@ -100,7 +134,8 @@ $s= oci_parse($c,$stmt);
  oci_bind_by_name($s,':current_id',$c_id);
 oci_execute($s);
 oci_fetch($s);
-$sender_n_val= oci_result($s, 'USERNAME');
+//$sender_n_val= oci_result($s, 'USERNAME');
+$sender_n_val= $username;
 $q = "select * from users where username=:towards";
 $cq = oci_parse($c,$q);
 oci_bind_by_name($cq, ':towards', $towards_val);
@@ -108,12 +143,12 @@ oci_execute($cq);
 oci_fetch($cq);
 $rec_n_val = oci_result($cq,'USERNAME');
 $rec_val = oci_result($cq,'ID');
-echo $rec_val;
+//echo $rec_val;
 
 
 $sql= "insert into messages values ( 1,:sender_n, :rec, :rec_n,:msg )";
 $compiled = oci_parse($c,$sql);
-oci_bind_by_name($compiled, 'sender_n', $sender_n_val);
+oci_bind_by_name($compiled, 'sender_n', $sender_n_val);//$_SESSION["username"]
 oci_bind_by_name($compiled, ':rec_n', $rec_n_val);
 oci_bind_by_name($compiled, ':msg', $msg_val);
 oci_bind_by_name($compiled, ':rec', $rec_val);
