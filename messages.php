@@ -110,12 +110,15 @@ while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
 echo "</table>\n";
 
 ?>
+<div class="register-form">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  Name: <input type="text" name="fname">
-  Msg: <input type="text" name="testmsg">
+  <input type="text" name="fname" placeholder="Send to:"></br></br>
+  <input type="text" name="testmsg" placeholder="Message:">
+</br></br>
   <input type="submit">
   <input type="submit" name="submit" value="Back"formaction="index.php">
 </form>
+</div>
 </body>
 </html>
 <?php

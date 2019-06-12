@@ -196,7 +196,7 @@ echo "<span class=error>Incorect data.</span>";
 <div class="register-form" style="margin-top: 30px;">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <span class="error"><?php echo $usernameErr;?></span>
-<input type="email" name="username" placeholder="Document" value="<?php echo $friendname;?>">
+<input type="file" name="username" placeholder="Document" value="<?php echo $friendname;?>">
 </br></br><input type="submit" name="submit" value="Upload calendar">
 
 </form>
