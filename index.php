@@ -1,6 +1,41 @@
 <?php
 session_start();
-$month=$_SESSION['month'];
+if(isset($_SESSION["month"])) $month=$_SESSION['month'];
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+//$success = true;
+//$password=strtoupper(md5($password));
+//lecalendar_account.create_account(:a_username, :a_password, :a_succes);
+if(isset($_SESSION["username"])) $username=$_SESSION["username"];
+if(isset($_SESSION["q"])) $q=$_SESSION["q"];
+//echo $username;
+//echo $q;
+//$query = "SELECT id from users where username=':a_username';";
+$query = "SELECT id from users where username=:a_username";
+$c = oci_connect("STUDENT", "STUDENT", "");
+
+if (!$c) {
+    $m = oci_error();
+    trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
+}
+
+$s = oci_parse($c, $query);
+if (!$s) {
+    $m = oci_error($c);
+    trigger_error('Could not parse statement: '. $m['message'], E_USER_ERROR);
+}
+
+oci_bind_by_name($s,':a_username',$username);
+
+oci_define_by_name($s, 'ID', $creator);
+
+$r = oci_execute($s);
+if (!$r) {
+    $m = oci_error($s);
+    trigger_error('Could not execute statement: '. $m['message'], E_USER_ERROR);
+}
+oci_fetch($s);
+$_SESSION["id_user"]=$creator;
 ?>
 <!DOCTYPE html>
 <html>

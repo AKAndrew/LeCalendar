@@ -19,7 +19,9 @@ CREATE TABLE users (
 CREATE TABLE friends (
 --  id INT PRIMARY KEY,
   id_user1 INT NOT NULL,
+  username1 varchar2(50),
   id_user2 INT NOT NULL,
+  Friends varchar2(50),
   created_at DATE,
   updated_at DATE,
   CONSTRAINT fk_friends_id_user1 FOREIGN KEY (id_user1) REFERENCES users(id),

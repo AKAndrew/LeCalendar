@@ -36,7 +36,7 @@ BEGIN
                 END LOOP;
                 DECLARE
                 BEGIN
-                    insert into friends values(v_i, v_index1, sysdate, sysdate);
+                    insert into friends values(v_i,null, v_index1,null, sysdate, sysdate);
                     exception
                         when OTHERS then null;
                 END;
