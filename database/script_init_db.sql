@@ -2,7 +2,8 @@ DROP TABLE users CASCADE CONSTRAINTS;
 /
 DROP TABLE friends CASCADE CONSTRAINTS;
 /
-
+DROP TABLE events CASCADE CONSTRAINTS;
+/
 CREATE TABLE users (
   id INT NOT NULL PRIMARY KEY,
   username VARCHAR2(50) NOT NULL UNIQUE,
@@ -24,6 +25,25 @@ CREATE TABLE friends (
 )
 /
 
+CREATE TABLE events (
+    id INT NOT NULL PRIMARY KEY,
+    title VARCHAR2(50),
+    description VARCHAR2(300),
+    location VARCHAR2(255),
+    start_date DATE,
+    end_date DATE,
+    start_hour DATE,
+    end_hour DATE,
+    visibility INT,
+    id_creator INT,
+    keywords VARCHAR2(255),
+    CONSTRAINT fk_id_creator FOREIGN KEY (id_creator) REFERENCES users(id)
+)
+/
+--select * from events where to_char(start_date,'yyyy-mm-dd')='2019-06-12';
+--insert into events values (1,'nebunia lui salam','ceam mai mare smecherie pe sistem','fratelii',to_date('2019-06-12','yyyy-mm-dd'),to_date('2019-06-13','yyyy-mm-dd'),to_date('20:00','HH24:MI'),to_date('23:00','HH24:MI'),1,327,'smecherie cu buton la cutie valoare buzunarul meu vorbeste');
+--/
+--select * from users;
 --CREATE UNIQUE INDEX users_username_index ON users(username);
 --/
 commit;
