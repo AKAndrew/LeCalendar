@@ -1,12 +1,9 @@
 <?php
 session_start();
-if(!empty($_SESSION))
-{
   if(isset($_SESSION["username"]))
   {
     header('Location: index.php');
   }
-}
 ?>
 
 <!DOCTYPE html>
@@ -33,14 +30,12 @@ if(!empty($_SESSION))
 			<a href="register.php"><li>Sign up</li></a>
 
       <?php
-      if(!empty($_SESSION))
-      {
         if(isset($_SESSION["username"]))
         {
           //header('Location: index.php');
       ?>
       <a href="logout.php"><li>Logout</li></a>
-    <?php }} ?>
+    <?php } ?>
 		</ul>
 	</nav>
 </header>

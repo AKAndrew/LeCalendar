@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$month=$_SESSION['month'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,14 +11,13 @@ session_start();
   <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body style="background-image:url(./images/<?php echo $month;?>.jpg);">
 
-<header>
+
+<header style="position: sticky; top:0px;">
 	<nav>
 		<ul>
       <?php
-      if(!empty($_SESSION))
-      {
         if(isset($_SESSION["username"]))
         {
           //header('Location: index.php');
@@ -27,7 +26,7 @@ session_start();
       <!--<a href="index.php"><li>Calendar</li></a>-->
       <a href="profile.php"><li>Profile</li></a>
       <a href="messages.php"><li>Messages</li></a>
-    <?php }} else{?>
+    <?php } else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
       <!--<a href="about.php"><li>Home</li></a>-->
@@ -56,7 +55,7 @@ echo $calendar->show();
 //if(isset($_SESSION["day"])){echo $_SESSION["day"];echo "done \n";}
 
 ?>
-<div class="events">
+<div class="events" style="background: #00000099;">
 <div id=event><b>Select a date</b></div>
 </div>
 <script>

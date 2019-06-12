@@ -62,14 +62,16 @@ class Calendar {
         $this->currentYear=$year;
 
         $this->currentMonth=$month;
+        //session_start();
+        $_SESSION["month"]=$month;
 
         $this->daysInMonth=$this->_daysInMonth($month,$year);
 
         $content='<div id="calendar">'.
-                        '<div class="box">'.
+                        '<div class="box" style="background: #00000099;">'.
                         $this->_createNavi().
                         '</div>'.
-                        '<div class="box-content">'.
+                        '<div class="box-content" style="background: #00000099;">'.
                                 '<ul class="label">'.$this->_createLabels().'</ul>';
                                 $content.='<div class="clear"></div>';
                                 $content.='<ul class="dates">';

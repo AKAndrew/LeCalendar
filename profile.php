@@ -17,8 +17,6 @@ $friendname="";
 	<nav>
 		<ul>
       <?php
-      if(!empty($_SESSION))
-      {
         if(isset($_SESSION["username"]))
         {
           //header('Location: index.php');
@@ -26,7 +24,7 @@ $friendname="";
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
       <a href="index.php"><li>Calendar</li></a>
       <a href="messages.php"><li>Messages</li></a>
-    <?php }} else{?>
+    <?php } else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
       <!--<a href="about.php"><li>Home</li></a>-->

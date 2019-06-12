@@ -137,8 +137,6 @@
 	<nav>
 		<ul>
       <?php
-      if(!empty($_SESSION))
-      {
         if(isset($_SESSION["username"]))
         {
           //header('Location: index.php');
@@ -147,7 +145,7 @@
       <a href="index.php"><li>Calendar</li></a>
       <!--<a href="register.php"><li>Sign up</li></a>-->
       <a href="profile.php"><li>Profile</li></a>
-    <?php }} else{?>
+    <?php } else{?>
 
       <a href="about.php"><p style="font-weight: bold">The leCalendar Website</p></a>
       <!--<a href="about.php"><li>Home</li></a>-->
