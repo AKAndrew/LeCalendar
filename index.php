@@ -117,6 +117,8 @@ document.addEventListener("click", function(){
 }
 
 </script>
+
+</br></br></br></br></br></br></br></br></br></br>
 <footer>
 	<div class="footer-content">
 		&copy; Faculty of Computer Science<br/><sub>est. MMXIX</sub><br/><sup>Iași, Romania</sup>

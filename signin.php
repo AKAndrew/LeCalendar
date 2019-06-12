@@ -79,8 +79,12 @@ function test_input($data) {
 <div class="register-content">
 	<div class="register-text">
 		<p style="font-weight: bold">Sign in</p>
-		<p>W3Schools is optimized for learning, testing, and training. Examples might be simplified to improve reading and basic understanding. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 1999-2019 by Refsnes Data. All Rights Reserved.
-			Powered by W3.CSS.</p>
+    <!--<p>W3Schools is optimized for learning, testing, and training. Examples might be simplified to improve reading and basic understanding. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 1999-2019 by Refsnes Data. All Rights Reserved.
+      Powered by W3.CSS.</p>-->
+<p>
+    Aenean vitae arcu vel neque condimentum vulputate. Suspendisse bibendum ipsum quis felis lacinia sollicitudin. Aenean volutpat enim et mattis blandit. Proin quis erat vitae magna bibendum imperdiet at posuere libero. Duis semper quam nec risus hendrerit, at fringilla dolor sagittis. Proin ultrices eros nec diam luctus vestibulum. Vestibulum interdum consectetur lectus, non porta metus tempus nec. Maecenas dignissim ornare ornare. Nulla lacinia commodo egestas. Praesent quis nulla urna. Maecenas eleifend felis eget dui mattis, ut egestas nibh convallis. Donec pulvinar leo vel erat consectetur tincidunt. Donec placerat arcu efficitur, mollis nunc in, suscipit lectus.
+</p>
+
 	</div>
 	<div class="signin-form">
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">

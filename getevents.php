@@ -90,5 +90,5 @@ echo "</table>\n";
 <!--<span class="error"><?php// echo $usernameErr;?></span>
 <input type="email" name="username" placeholder="E-mail" value="<?php// echo $friendname;?>">-->
 </br></br><input type="submit" name="submit" value="Add event">
-
+</br></br>
 </form>
