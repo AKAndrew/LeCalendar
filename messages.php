@@ -2,6 +2,7 @@
 session_start();
 ?>
 <html>
+<title>Messages - leCalendar</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 <body>
   <header>

@@ -69,11 +69,15 @@ text varchar2(1000)
 --CREATE UNIQUE INDEX users_username_index ON users(username);
 --/
 commit;
---/
---select * from users where username='a@a';
---/
---select * from friends;
+/
+select * from users;
+/
+select * from users where username='a@a';
+/
+select * from friends;
 
 
---/
---select id from users where username='a@a';
+/
+select id from users where username='a@a';
+
+

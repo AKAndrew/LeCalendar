@@ -89,6 +89,8 @@ echo "</table>\n";
 <form method="post" action="addevent.php<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <!--<span class="error"><?php// echo $usernameErr;?></span>
 <input type="email" name="username" placeholder="E-mail" value="<?php// echo $friendname;?>">-->
+<?php if(isset($_SESSION["username"])) {?>
 </br></br><input type="submit" name="submit" value="Add event">
 </br></br>
+<?php }?>
 </form>
