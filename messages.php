@@ -112,13 +112,64 @@ echo "</table>\n";
 ?>
 <div class="register-form">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <input type="text" name="fname" placeholder="Send to:"></br></br>
+<!--
+  <input type="text" name="fname" placeholder="Send to:">
+-->
+    <select name="friend" placeholder="E-mail">
+        <option disabled selected>Friend</option>
+        <!--<option disabled selected><?php //$result ?></option>-->
+
+        <?php
+//        $query = "select name from heroes order by name asc";
+
+ $c_id=$_SESSION["id_user"];
+
+ $query="select Friends from friends where id_user1=:cid";
+
+        $c = oci_connect("STUDENT", "STUDENT", "");
+
+        if (!$c) {
+            $m = oci_error();
+            trigger_error('Could not connect to database: '. $m['message'], E_USER_ERROR);
+        }
+
+        $s = oci_parse($c, $query);
+        if (!$s) {
+            $m = oci_error($c);
+            trigger_error('Could not parse statement: '. $m['message'], E_USER_ERROR);
+        }
+
+        //oci_define_by_name($s, 'NAME', $name);
+        oci_define_by_name($s, 'FRIENDS', $friend);
+oci_bind_by_name($s,':cid',$c_id);
+        $r = oci_execute($s);
+        if (!$r) {
+            $m = oci_error($s);
+            trigger_error('Could not execute statement: '. $m['message'], E_USER_ERROR);
+        }
+
+        while (oci_fetch($s)) {
+        echo '<option>';
+        echo $friend;
+        echo '<//option>';
+        }
+
+
+        ?>
+    </select>
+
+
+
+
+
+</br></br>
   <input type="text" name="testmsg" placeholder="Message:">
 </br></br>
   <input type="submit">
   <input type="submit" name="submit" value="Back"formaction="index.php">
 </form>
 <?php
+/*
  $c_id=$_SESSION["id_user"];
 
  $query="select Friends from friends where id_user1=:cid";
@@ -164,7 +215,7 @@ while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
     echo "</tr>\n";
 }
 echo "</table>\n";
-
+*/
 ?>
 
 
