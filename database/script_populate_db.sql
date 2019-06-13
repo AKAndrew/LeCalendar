@@ -34,7 +34,7 @@ BEGIN
                     v_index1 := TRUNC(DBMS_RANDOM.VALUE(1,v_nr_of_users) + 1);
                     exit when v_i <> v_index1;
                 END LOOP;
-                DECLARE
+                DECLARE 
                 BEGIN
                     insert into friends values(v_i,null, v_index1,null, sysdate, sysdate);
                     exception

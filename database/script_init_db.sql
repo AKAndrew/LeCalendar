@@ -55,9 +55,21 @@ text varchar2(1000)
 /
 
 --select * from events where to_char(start_date,'yyyy-mm-dd')='2019-06-12';
+--
+
 --insert into events values (1,'nebunia lui salam','ceam mai mare smecherie pe sistem','fratelii',to_date('2019-06-12','yyyy-mm-dd'),to_date('2019-06-13','yyyy-mm-dd'),to_date('20:00','HH24:MI'),to_date('23:00','HH24:MI'),1,327,'smecherie cu buton la cutie valoare buzunarul meu vorbeste');
+--/
+--insert into friends values (1001,'a@a',1002,'b@b',sysdate,sysdate);
+--/
+--select * from users where id=1002;
+--/
+--select * from friends where id_user1=1001;
 --/
 --select * from users;
 --CREATE UNIQUE INDEX users_username_index ON users(username);
 --/
 commit;
+--/
+--select * from users where username='a@a';
+--/
+--select * from friends;

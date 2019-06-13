@@ -1,6 +1,6 @@
 <?php
 session_start();
-$friendname="";
+$friendErr = $friendname="";
 ?>
 <!DOCTYPE html>
 <html>
@@ -111,7 +111,17 @@ function test_input($data) {
       <p>Confirm Password<br/><input type="password" placeholder="Confirm Password" /></p>
       <input type="submit" value="Register"/>
 -->
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["fr"])) {
+    $friendErr = "email is required";
+  } else {
+    //$username = test_input($_POST["username"]);
 
+$friendname = $_POST["fr"];
+}
+}
+?>
 
 <p><span class="error"><?php echo $usernameErr;?></span>
 <input type="email" name="username" placeholder="New e-mail" value="<?php echo $username;?>">
@@ -235,9 +245,9 @@ echo "<span class=error>Incorect data.</span>";
     ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-<span class="error"><?php echo $usernameErr;?></span>
-<input type="email" name="username" placeholder="E-mail" value="<?php echo $friendname;?>">
-</br></br><input type="submit" name="submit" value="Send friend request">
+<span class="error"><?php echo $friendErr;?></span>
+<input type="email" name="fr" placeholder="E-mail" value="<?php echo $friendname;?>">
+</br></br><input type="submit" name="" value="Send friend request">
 
 <?php
 if(isset($_POST["fr"])){
@@ -248,7 +258,7 @@ $c = oci_connect("STUDENT", "STUDENT", "");
 
 
  $c_id=$_SESSION["id_user"];
- $f_user = $_POST['fr'];
+ $f_user = $_POST["fr"];
  $c_user = $_SESSION["username"];
 
  $sql="select id from users where username=:f_username";
@@ -257,7 +267,7 @@ $c = oci_connect("STUDENT", "STUDENT", "");
  oci_execute($p);
  oci_fetch($p);
  $id_f=oci_result($p,'ID');
- echo $id_f;
+
 
 
  $query="insert into friends values (:cid,:cuser,:fid,:fuser,null,null)";
