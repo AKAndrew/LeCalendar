@@ -73,3 +73,7 @@ commit;
 --select * from users where username='a@a';
 --/
 --select * from friends;
+
+
+--/
+--select id from users where username='a@a';

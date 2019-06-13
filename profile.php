@@ -268,8 +268,6 @@ $c = oci_connect("STUDENT", "STUDENT", "");
  oci_fetch($p);
  $id_f=oci_result($p,'ID');
 
-
-
  $query="insert into friends values (:cid,:cuser,:fid,:fuser,null,null)";
  $qparse=oci_parse($c,$query);
  oci_bind_by_name($qparse,':fuser',$f_user);
