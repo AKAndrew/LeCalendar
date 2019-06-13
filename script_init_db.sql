@@ -11,6 +11,7 @@ CREATE TABLE users (
   id INT NOT NULL PRIMARY KEY,
   username VARCHAR2(50) NOT NULL UNIQUE,
   password VARCHAR2(200) NOT NULL,
+  city varchar(50),
   created_at DATE,
   updated_at DATE
 )
@@ -53,7 +54,6 @@ reveiver_name varchar2(50),
 text varchar2(1000)
 )
 /
-
 --select * from events where to_char(start_date,'yyyy-mm-dd')='2019-06-12';
 --insert into events values (1,'nebunia lui salam','ceam mai mare smecherie pe sistem','fratelii',to_date('2019-06-12','yyyy-mm-dd'),to_date('2019-06-13','yyyy-mm-dd'),to_date('20:00','HH24:MI'),to_date('23:00','HH24:MI'),1,327,'smecherie cu buton la cutie valoare buzunarul meu vorbeste');
 --/
