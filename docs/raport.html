@@ -1,0 +1,168 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="user-guide.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+    <title>leCalendar Guide</title>
+</head>
+
+<body>
+
+    <h1> leCalendar description </h1>
+
+    <div id="toc_container">
+        <ul class="toc_list">
+            <li><a href="#ourporject">1. Our project</a></li>
+            <li><a href="#things">2. Things we used</a>
+                <ul>
+                    <li><a href="#php">2.1 The PHP scripts</a></li>
+                    <li><a href="#database">2.2 Database </a></li>
+                </ul>
+            </li>
+            <li><a href="#website">3. How it works</a>
+                <ul>
+				    <li><a href="#addevent">3.1 Add an event </a></li>				    
+					<li><a href="#addfriend">3.2  Add friends who have an account on this site</a></li>
+					<li><a href="#Friendlist">3.3  See your friends</a></li>
+					<li><a href="#sendmsg">3.4  Send a message to a friend</a></li>
+					<li><a href="#viewmsg">3.5  View your messages</a></li>
+
+                </ul>
+            </li>
+			<li><a href="#progress">4.Project's evolution </a></li>	
+        </ul>
+    </div>
+
+
+    <section id="ourproject">
+        <h2> 1. Our project </h2>
+        <p> leCalendar is a platform for those who want to be in touch with all the upcoming events, is an
+            autonomous aggregator of events dedicated to a community of practice (for example, conferences on Web
+            development). Specifically, the application administrator will enter a list of people and pages of interest
+            whose activity on social networks will be automatically tracked. When they create or publish data about a
+            new event (e.g., StagiiPeBune Iaşi 2019), the application will automatically process the event information
+            (using the data provided by Facebook, Eventsbrite, Meetup, personal site, etc.) and centralize them on their
+            own page. At least, each event will have associated date and location, a description, ticket price, and
+            descriptive tags (Web Development, Social Skills, Public Speaking, ...) plus other information of interest:
+            invitation only, event category (technical, advertising, recruitment). Users registered on the platform who
+            will be able to "subscribe" to certain tags and receive emails about the events of interest in the next time
+            period / weeks / months). The calendar of events can be exported as an iCalendar document.</p>
+		<p> We, 3 promising students, wroked together in order to achieve a smooth running website that satisfies all the requests.</p>	
+    </section>
+
+    <section id="things">
+        <h2> 2. What we used in this project </h2>
+        <p>  In order to get things done we chose to use a variety of technologies that make the execution of our website possible</p>
+        <h2 id="#php"> 2.1 The PHP script </h2>
+        <p> Our aim was to make our application as dynamic as possible so we chose php as a way to make things communicate smoothly between themselves.</br>
+		   private function _showDay($cellNumber){</br>
+        if($this->currentDay==0){</br>
+            $firstDayOfTheWeek = date('N',strtotime($this->currentYear.'-'.$this->currentMonth.'-01'));</br>
+            if(intval($cellNumber) == intval($firstDayOfTheWeek)){</br>
+                $this->currentDay=1;</br>
+            }</br>
+        }</br>
+        if( ($this->currentDay!=0)&&($this->currentDay<=$this->daysInMonth) ){</br>
+            $this->currentDate = date('Y-m-d',strtotime($this->currentYear.'-'.$this->currentMonth.'-'.($this->currentDay)));</br>
+            $cellContent = $this->currentDay;</br>
+            $this->currentDay++;</br>
+			<strong>This is bit of code we used to make a working calendar system that can increment as many years as we want.</strong></p>
+        </ol>
+        <h2 id="database"> 2.2 Our database</h2>
+        <ol>
+            <li>To be able to store our data we chose to use an intuitive database that allows us to easily go through all the information we need to use.
+                Here are some bits of our database:</li>
+            <li> CREATE TABLE users ( </br>
+                 id INT NOT NULL PRIMARY KEY, </br>
+                 username VARCHAR2(50) NOT NULL UNIQUE, </br>
+                 password VARCHAR2(200) NOT NULL, </br>
+                 created_at DATE, </br>
+                 updated_at DATE </br>
+                 ) </br>
+/ </br>
+</br>
+                 CREATE TABLE friends ( </br>
+                 id_user1 INT NOT NULL,</br>
+                 username1 varchar2(50),</br>
+                 id_user2 INT NOT NULL,</br>
+                 Friends varchar2(50),</br>
+                 created_at DATE,</br>
+                 updated_at DATE,</br>
+                 CONSTRAINT fk_friends_id_user1 FOREIGN KEY (id_user1) REFERENCES users(id),</br>
+                 CONSTRAINT fk_friends_id_user2 FOREIGN KEY (id_user2) REFERENCES users(id),</br>
+                 CONSTRAINT no_duplicates_friends UNIQUE (id_user1, id_user2)</br>
+                 )</br>
+/</li>
+            <li> As you can se we carefully chose our constraints and datatypes to avoid having invalid entries in our tables. </li>
+        </ol>
+    </section>
+
+    <section id="website">
+        <h2> 3. How it works?</h2>
+        <p> By making connexions to our database, the website takes whatever information it needs from the tables of refference.
+        </p>
+        <p> <strong> Here is how we thought when building the application. </strong></p>
+
+        <h2 id="addevent"> 3.1 Add event </h2>
+        <p> In order to store the events we want to use we made it possible to complete a form with the desired data and insert the data in our database </p>
+        <p> To do that we use an insert command that binds certain variables received from the user for protection.</br>
+		    $query = "BEGIN lecalendar_external.add_event(:a_titlu,:a_descriere,:a_locatie,:a_current_date,:a_current_date,:a_start_hour,:a_end_hour,:a_visible,:a_creator,:a_tags); END;";
+             </p>
+        <p> Complete the form with the details and when you are done press the button <em><strong> Add event </strong></em>.</p>
+		<h2 id="addfriend"> 3.2 Add a friend </h2>
+        <p> Similar to creating an event, friend adding means that we insert the data we want in the "friends" table so we can use it afterwards to view our friends.</p>
+        <p> $query="insert into friends values (:cid,:cuser,:fid,:fuser,null,null)";</p>
+		<h2 id="Friendlist"> 3.3 See your friends </h2>
+        <p> After inserting a friendship relation in our table we can view all the friends we have </p>      
+        <p>      $query="select Friends from friends where id_user1=:cid"; </p>		
+		<h2 id="sendmsg"> 3.4 Send a message </h2>
+        <p> With another form we can select a user that we are friends with and insert a text that our friend will receive.</p>
+        <p> $query = "SELECT id from users where username=:a_username";</br>
+            $c = oci_connect("STUDENT", "STUDENT", "");</br>
+			while (($row = oci_fetch_array($s, OCI_ASSOC+OCI_RETURN_NULLS)) != false) { </br>
+                echo "<tr>\n"; </br>
+    foreach ($row as $item) { </br>
+        echo "<td>"; </br>
+        echo $item!==null?htmlspecialchars($item, ENT_QUOTES|ENT_SUBSTITUTE):"&nbsp;"; </br>
+        echo "</td>\n"; </br>
+    }</br>
+    echo "</tr>\n";</br>
+}</br>
+echo "</table>\n";</p>		</br>
+		<h2 id="viewmsg"> 3.5 View your messages </h2>
+        <p> To be able to view a message we interact with our database in such a way that we choose all the messages a receiver has.</p>
+        <p>  $query="select sender_name,text from messages where receiver=:a_creator";</p>		
+    </section>
+
+    <section id="progress">
+	<p> Our project has evolved without a break throughout the course of the whole semester.</br>
+	    Every lesson we had in our Web Technologies class we got closer and closer to achieving a realistic website.</br>
+		In the beggining we only had a schematic website desing that only used html and css tech. That allowed us to have a base for our website that </br>
+		was further going to evolve into something dynamic that can interact with many things.</br>
+		After studying the first few PHP lessons, we began building it so it could start communicating with an intuitive database.</br>
+		Furthermore we started being able to use functions that could manipulate data from the database only by completing some form of data insertion in the website.</br>
+		Finally after having done many functions and procedures, we started securing the data we have by not allowing SQL or HTML injections of any kind and protecting our user's sessions.</br>
+		</p>
+    </section>
+
+
+    <section>
+        <h2> Authors </h2>
+        <p> Corban Cristian </p>
+        <p> Zbant Andrei </p>
+        <p> Tocu Andrei </p>
+    </section>
+
+</body>
+
+</html>
+<!--
+<style>
+*{
+//text-align: center;
+}
+section{
+}
+</style>
+-->
