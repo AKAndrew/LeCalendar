@@ -116,7 +116,7 @@ echo "</table>\n";
 <!--
   <input type="text" name="fname" placeholder="Send to:">
 -->
-    <select name="friend" placeholder="E-mail">
+    <select name="fname" placeholder="E-mail">
         <option disabled selected>Friend</option>
         <!--<option disabled selected><?php //$result ?></option>-->
 
